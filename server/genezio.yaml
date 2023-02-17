@@ -1,0 +1,23 @@
+name: wweather
+region: us-east-1
+sdk:
+  language: js
+  options:
+    runtime: browser
+  path: ../client/src/sdk
+frontend:
+  path: ../client/build
+  subdomain: wweather
+classes:
+  - path: ./task.js
+    type: jsonrpc
+    methods: []
+  - path: ./user.js
+    type: jsonrpc
+    methods: []
+  - path: ./cron.js
+    type: jsonrpc
+    methods:
+      - name: runSchedules
+        type: cron
+        cronString: "* * * * *"
