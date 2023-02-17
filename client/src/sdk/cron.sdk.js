@@ -6,7 +6,7 @@
   import { Remote } from "./remote.js"
   
   export class Cron {
-      static remote = new Remote("https://6akjafdbzeq5iu6wangg7f5cxa0uxpnr.lambda-url.us-east-1.on.aws/")
+      static remote = new Remote("http://127.0.0.1:8083/Cron")
   
       static async runSingleSchedule(task) {
           return Cron.remote.call("Cron.runSingleSchedule", task)  

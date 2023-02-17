@@ -28,12 +28,15 @@ export class Cron {
 
     console.log("Running schedule for " + task.title + " in " + task.location + " at " + task.hour);
 
-    if (now.getHours() + ":" + now.getMinutes() == task.hour) {
+    if (true || now.getHours() + ":" + now.getMinutes() == task.hour) {
         const result = await axios.get("https://api.openweathermap.org/data/2.5/weather?q=" + task.location + "&units=metric&appid=e3f4db5c669116d1a7e3c49b2f05dc47");
         
-        require ('dotenv');
-        const accountSid = process.env.tw_accountSid; 
-        const authToken = process.env.tw_authToken;
+        require ('dotenv').config();
+        const accountSid = process.env.TWILIO_ACCOUNT_SID; 
+        const authToken = process.env.TWILIO_AUTH_TOKEN;
+
+        console.log(accountSid, authToken);
+        
         const client = require('twilio')(accountSid, authToken); 
 
         client.messages 
